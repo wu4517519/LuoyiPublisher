@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.luoyi.luoyipublisher"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11 -frtti -fexceptions -lz"
+                //cppFlags "-fexceptions"
+            }
+        }
+
+        /*腾讯信鸽配置*/
+        /*manifestPlaceholders = [
+                XG_ACCESS_ID:"2100268392",
+                XG_ACCESS_KEY : "ABQ139NTJ71D",
+        ]*/
+    }
+
+    splits {
+
+        // Configures screen ABI split settings
+        abi {
+
+            // Enable ABI APK splits
+            enable true
+
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs for x86, armeabi-v7a, and mips
+
+            // Resets the list of ABIs that Gradle should create APKs for to none
+            reset()
+
+            // Specifies a list of ABIs that Gradle should create APKs for
+            //include "armeabi"
+
+            include 'armeabi-v7a', 'arm64-v8a', 'mips64'//select ABIs to build APKs for
+
+            // Specify that we do not want to also generate a universal APK that includes all ABIs
+            //universalApk false
+            universalApk true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.3.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+    compile files('src/main/jniLibs/smartavengine.jar')
+    compile project(':openCVLibrary330')
+    /*底部导航栏*/
+    compile 'com.ashokvarma.android:bottom-navigation-bar:1.4.1'
+    /*Xutils*/
+    compile 'org.xutils:xutils:3.3.42'
+    compile 'com.google.code.gson:gson:2.8.2'
+    /*MarkedSizeView需要的包*/
+    compile project(':commonjar')
+    compile 'com.yanzhenjie:recyclerview-swipe:1.0.2'
+    compile project(':PushSDK')
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

@@ -1,0 +1,133 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.luoyi.luoyipublisher.fragment.CaptureFragment"
+    android:id="@+id/capture_box"
+    >
+
+
+    <!--<com.luoyi.luoyipublisher.view.MarkSizeView
+        android:id="@+id/mark_size"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/capture_tips"
+        android:layout_width="match_parent"
+        android:layout_centerInParent="true"
+        android:text="请绘制监控区域"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:layout_height="wrap_content" />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/one">
+        <LinearLayout
+            android:id="@+id/top_ly"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.08"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/button_mute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mute"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text=" 静音"
+                />
+
+            <ImageView
+                android:id="@+id/button_start_recorder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/recording"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text=" 静音"
+                />
+
+            <ImageView
+                android:id="@+id/button_switchCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/back_camera"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text="@string/switchCameraText"
+                />
+            <ImageView
+                android:id="@+id/capture_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/setting"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/rl_capture_pw"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.82"
+
+            >
+
+            <android.view.SurfaceView
+                android:id="@+id/surface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_weight="0.1"
+            android:gravity="center"
+            android:id="@+id/bottom_ly"
+            >
+
+            <ImageView
+                android:id="@+id/drawArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/area" />
+
+            <ImageView
+                android:id="@+id/button_start_push"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/monitor"
+                android:text=" 推送" />
+
+            <ImageView
+                android:id="@+id/button_recoder_manage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/video_file"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:text=" 录像管理 "
+                />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
